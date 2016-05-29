@@ -23,7 +23,7 @@ void draw() {
 
 
   for (int i=0; i < balls.length; i++ ) {
-    
+    balls[i].move();
   }
 
   for (int i=0; i < balls.length; i++ ) {
