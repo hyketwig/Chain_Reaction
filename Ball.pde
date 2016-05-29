@@ -38,6 +38,12 @@ class Ball {
     state = MOVING;
   }
   
+  void bounce() {
+    if (x == 0)
+      x = -x;
+    else if (y == 0)
+      y = -y;
+  }
 
   void move() {
     x = x + dx;
@@ -45,10 +51,19 @@ class Ball {
     bounce();
   }
  
- 
- boolean isTouching( Ball other ) {
- 
+ void process() {
+
  }
  
-  
+ void draw(int i) {
+   ellipse(x,y,rad,rad);
+ }
+ 
+ boolean isTouching( Ball other ) {
+   return false;
+ }
+ 
+ 
+ 
+
 }//end class Ball
