@@ -44,22 +44,40 @@ class Ball {
     y = y + dy;
     bounce();
   }
+  
+  void bounce(){
+    if (x <=0 || x>=600){
+      dx=-dx;
+    }
+    if (y <=0 || y>= 600){
+      dy=-dy;
+    }
+  }
+  
   void draw(int i){
     ellipse(x, y, dx, dy);
   }
   
   void process(){
+    if (state==0){
     move();
-    if (isTouching){
-      //functionality
     }
+    if (state==1){
+      //grow
+    }
+    if (state==2){
+      //shrink
+    }
+    if (state==3){
+      //
+    }
+    //if (isTouching)
   }
  
  
  boolean isTouching( Ball other ) {
-   return (other.x+rad
-   //add radius to x y, dx, dy
- }
+   return ( (rad + other.rad) > (sqrt( sq(x - other.x)+sq(y - other.y) )));
+  }
  
   
 }//end class Ball
