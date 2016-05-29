@@ -2,7 +2,6 @@
 //APCS2 pd09
 //HW47 -- All That Bouncin'
 //2016-05-31
-
 Ball[] balls;
 
 boolean reactionStarted;

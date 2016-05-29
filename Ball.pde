@@ -44,10 +44,21 @@ class Ball {
     y = y + dy;
     bounce();
   }
+  void draw(int i){
+    ellipse(x, y, dx, dy);
+  }
+  
+  void process(){
+    move();
+    if (isTouching){
+      //functionality
+    }
+  }
  
  
  boolean isTouching( Ball other ) {
- 
+   return (other.x+rad
+   //add radius to x y, dx, dy
  }
  
   
