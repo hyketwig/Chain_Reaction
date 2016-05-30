@@ -54,11 +54,23 @@ class Ball {
   }
   
   void draw(int i){
-    if (state == 1 || state == 2)
-      ellipse(x,y,i,i);
-    else if (state == 0)
+    if (state == 0)
       ellipse(x, y, 20, 20);
-
+    else if (state == 1 ) { //grow
+       while (i < 50) {
+        ellipse(x,y,i,i);
+        fill(c);
+        i++;
+       }
+    }
+    else if (state == 2) {
+       while (i > 0) { //shrink
+         ellipse(x,y,i,i);
+         fill(c);
+         i--;
+       }
+    }
+    
     if (state != 3)
       fill(c);
     else
@@ -70,23 +82,20 @@ class Ball {
       move();
     }
     if (state==1){
-      for (int i = 20; i <= 50; i++)
-         draw(i);
-       state = 2;
+      draw(50);
+      state = 2;
     }
     if (state==2){
-      for (int i = 50; i > 0; i--)
-        draw(i);
       state = 3;
     }
     if (state==3){
       draw(0);
     }
-    //if (isTouching()
   }
  
  boolean isTouching( Ball other ) {
-   return ( (rad + other.rad) > (sqrt( sq(x - other.x)+sq(y - other.y) )));
+   return ( (rad + other.rad) > (sqrt( sq(x - other.x)+sq(y - other.y) ))) &&
+            (other.state == 1 || other.state == 2);
   }
 
 
