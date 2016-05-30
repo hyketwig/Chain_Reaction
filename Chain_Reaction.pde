@@ -23,8 +23,8 @@ void draw() {
 
   for (int i=0; i < balls.length; i++ ) {
     balls[i].move();
-    for (int j=0; j < balls.length; j++ ) {
-      if (i != j) {
+    for (int j=0; j < balls.length; j++ ) { //check if getting infected
+      if (i != j && (balls[i].state == Ball.MOVING)) {
         if (balls[i].isTouching(balls[j]))
           balls[i].state = Ball.GROWING;
       }

@@ -62,25 +62,25 @@ class Ball {
   
   void process(){
     move();
-    if (state==1){
-      rad += .5;
-      if (rad >= 70)
+    if (state==1){ //growing
+      if (rad >= 70) //at this point, start shrinking
         state = 2;
+      rad += .5;
     }
-    if (state==2){
-      rad -= .5;
-      if (rad <= 0)
+    if (state==2){ //shrinking
+      if (rad <= 0) //at this point, dead
         state = 3;
+      rad -= .5;
     }
-    if (state==3) {
+    if (state==3) { //dead
       rad = 0;
     }
   }
  
  boolean isTouching( Ball other ) {
-   boolean touching = ((rad + other.rad)/2 > (sqrt( sq(x - other.x)+sq(y - other.y))));
+   boolean touching = ((rad + other.rad/2) > (sqrt( sq(x - other.x)+sq(y - other.y))));
    boolean otherInfected = (other.state == 1 || other.state == 2);
-   return touching && otherInfected;
+   return touching && otherInfected; 
   }
 
 
